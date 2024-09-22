@@ -1,20 +1,49 @@
-# pymongo-api
+# mongo-sharding
 
 ## Как запустить
 
-Запускаем mongodb и приложение
+Запускаем приложение
 
 ```shell
 docker compose up -d
 ```
 
-Заполняем mongodb данными
+Подключитесь к серверу конфигурации и сделайте инициализацию:
+
+```shell
+./scripts/configSrv-init.sh
+```
+
+
+Инициализируйте шард 1:
+
+```shell
+./scripts/shard1-init.sh
+```
+
+Инициализируйте шард 2:
+
+```shell
+./scripts/shard2-init.sh
+```
+
+Инцициализируйте роутер и наполните его тестовыми данными:
 
 ```shell
 ./scripts/mongo-init.sh
 ```
 
 ## Как проверить
+
+Количество документов на shard1
+```shell
+./scripts/document-count-shard1.sh
+```
+
+Количество документов на shard2
+```shell
+./scripts/document-count-shard2.sh
+```
 
 ### Если вы запускаете проект на локальной машине
 
